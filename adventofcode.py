@@ -50,3 +50,33 @@ def day2():
 
     print(totalscore)
 
+
+def day3():
+    f = open("input.txt", "r")
+    input = f.readlines()
+    i = 0
+    totalpriority = 0
+    groupedlines = []
+    groupedlines.append([])
+    for line in input:
+        if len(groupedlines[i]) == 3:
+            for char in groupedlines[i][0]:
+                if char in groupedlines[i][1] and char in groupedlines[i][2]:
+                    totalpriority += ord(char) - 96 if char.islower() else ord(char) - 38
+                    break
+            i += 1
+            groupedlines.append([])
+        groupedlines[i].append(line)
+    
+        #line1 = line[slice(0,len(line)//2)]
+        #line2 = line[slice(len(line)//2,len(line))]
+        #matches = []
+        #for char in line1:
+        #    if char in line2 and char not in matches:
+        #        matches.append(char)
+        #        totalpriority += ord(char) - 96 if char.islower() else ord(char) - 38
+    for char in groupedlines[-1][0]:
+                if char in groupedlines[-1][1] and char in groupedlines[-1][2]:
+                    totalpriority += ord(char) - 96 if char.islower() else ord(char) - 38
+                    break
+    print(totalpriority)
